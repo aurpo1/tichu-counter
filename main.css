@@ -1,0 +1,75 @@
+/* COMMON */
+body {
+  margin: 0 auto;
+  width: 768px;
+  text-align: center;
+  vertical-align: middle;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+  position: relative;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+/* MAIN */
+
+section {
+  width: 768px;
+  margin-bottom: 20px;
+}
+
+section#main {
+  position: relative;
+}
+
+button#btn-reset {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+header {
+  font-size: 24px;
+  font-weight: 500;
+  background-color: rgb(37, 167, 109);
+  color: #fff;
+}
+
+div#score-box {
+  display: flex;
+}
+
+div#score {
+  width: 384px;
+}
+
+li {
+  display: flex;
+}
+
+li > button {
+  position: absolute;
+  right: 0;
+}
+
+div#btn-boxs {
+  display: flex;
+}
+
+div#btns {
+  width: 384px;
+}
+
+input#input-score {
+  width: 700px;
+}

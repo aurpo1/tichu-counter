@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tichu Counter</title>
+    <link rel="stylesheet" href="./main.css" />
+    <script src="./main.js"></script>
+  </head>
+  <body>
+    <section id="main">
+      <header id="main-title">Tichu Counter</header>
+      <button id="btn-reset">reset</button>
+      <div id="score-box">
+        <div id="score">
+          <span id="team-name-a">A team</span>
+          <p id="score-a">0</p>
+        </div>
+        <div id="score">
+          <span id="team-name-b">B team</span>
+          <p id="score-b">0</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <header id="sub-title">History</header>
+      <ul id="history"></ul>
+    </section>
+
+    <section>
+      <header id="sub-title">Current Round Score</header>
+      <div id="score-box">
+        <div id="score">
+          <span id="team-name-a">A team</span>
+          <p id="c-score-a">50</p>
+        </div>
+        <div id="score">
+          <span id="team-name-b">B team</span>
+          <p id="c-score-b">50</p>
+        </div>
+      </div>
+      <div id="btn-boxs">
+        <div id="btns">
+          <button id="btn-t">Small Tichu</button>
+          <button id="btn-t">Large Tichu</button>
+          <button id="btn-sf">success or fail</button>
+          <button id="btn-ot">One Two!</button>
+        </div>
+        <div id="btns">
+          <button id="btn-t">Small Tichu</button>
+          <button id="btn-t">Large Tichu</button>
+          <button id="btn-sf">success or fail</button>
+          <button id="btn-ot">One Two!</button>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div>점수 입력하는 input</div>
+      <div>
+        <input
+          id="input-score"
+          type="range"
+          min="0"
+          max="100"
+          step="5"
+          value="50"
+          oninput="inputValue(this)"
+        />
+      </div>
+      <button id="btn-save" onclick="save(this)">Save</button>
+    </section>
+  </body>
+</html>
