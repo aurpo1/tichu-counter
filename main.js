@@ -1,5 +1,8 @@
 console.log("티츄 카운터 만들고 싶어");
 
+// 현재 라운드
+let now = 1;
+
 // 리셋 버튼 누르면 총 점수, 히스토리 모두 삭제
 
 // 점수 입력
@@ -36,24 +39,32 @@ const save = () => {
   document.getElementById("c-score-b").innerText = 50;
   document.getElementById("input-score").value = 50;
 
-  // 한 라운드 점수 저장
+  // 현재 라운드 점수 저장
   const hisotryEl = document.getElementById("history");
   let liEl = document.createElement("li");
+  let rEl = document.createElement("p");
   let aEl = document.createElement("div");
   let bEl = document.createElement("div");
 
-  aEl.id = "score";
-  bEl.id = "score";
+  liEl.id = `round${now}`;
+  rEl.innerHTML = `${now}.`;
+  aEl.id = `score${now}`;
+  bEl.id = `score${now}`;
   aEl.innerHTML = curA;
   bEl.innerHTML = curB;
 
+  liEl.appendChild(rEl);
   liEl.appendChild(aEl);
   liEl.appendChild(bEl);
 
   let btnEl = document.createElement("button");
-  btnEl.id = "btn-del";
+  btnEl.id = `btn-del${now}`;
   btnEl.innerHTML = "X";
   liEl.appendChild(btnEl);
 
   hisotryEl.appendChild(liEl);
+
+  console.log(now);
+  console.log(btnEl);
+  now++;
 };
