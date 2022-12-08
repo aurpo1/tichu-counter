@@ -57,6 +57,15 @@ li {
   display: flex;
 }
 
+li > p {
+  position: absolute;
+  left: 10;
+}
+
+li > div {
+  width: 384px;
+}
+
 li > button {
   position: absolute;
   right: 0;
