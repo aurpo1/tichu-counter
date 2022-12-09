@@ -27,7 +27,7 @@ const inputValue = () => {
 const save = () => {
   let curA = Number(document.querySelector(".score.cur.left").innerText);
   let curB = Number(document.querySelector(".score.cur.right").innerText);
-  console.log(curA);
+
   let totalA = Number(document.querySelector(".score.total.left").innerText);
   let totalB = Number(document.querySelector(".score.total.right").innerText);
 
@@ -46,10 +46,10 @@ const save = () => {
   let aEl = document.createElement("div");
   let bEl = document.createElement("div");
 
-  liEl.classList.add(`round${now}`);
+  liEl.classList.add("round", `${now}`, `round${now}`);
   rEl.innerHTML = `${now}.`;
-  aEl.classList.add(`score${now}`);
-  bEl.classList.add(`score${now}`);
+  aEl.classList.add("score", "round", `${now}`, "left");
+  bEl.classList.add("score", "round", `${now}`, "right");
   aEl.innerHTML = curA;
   bEl.innerHTML = curB;
 
@@ -58,13 +58,11 @@ const save = () => {
   liEl.appendChild(bEl);
 
   let btnEl = document.createElement("button");
-  btnEl.classList.add(`btn-del${now}`);
+  btnEl.classList.add("btn=del", `${now}`, `btn-del${now}`);
   btnEl.innerHTML = "X";
   liEl.appendChild(btnEl);
 
   hisotryEl.appendChild(liEl);
 
-  console.log(now);
-  console.log(btnEl);
   now++;
 };
