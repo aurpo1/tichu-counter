@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="wclassth=device-wclassth, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tichu Counter</title>
     <link rel="stylesheet" href="./main.css" />
-    <script src="./main.js"></script>
+    <script defer src="./main.js"></script>
   </head>
   <body>
     <section class="main">
@@ -24,7 +24,7 @@
       </div>
     </section>
 
-    <section>
+    <section class="sub1">
       <header class="sub-title">History</header>
       <ul class="history">
         <li class="round">
@@ -36,30 +36,34 @@
       </ul>
     </section>
 
-    <section>
+    <section class="sub2">
       <header class="sub-title">Current Round Score</header>
       <div class="score-box">
         <div class="score">
-          <span class="team-name left">A team</span>
-          <p class="score cur left">50</p>
+          <div>
+            <span class="team-name left">A team</span>
+            <p class="score cur left">50</p>
+          </div>
+          <button class="onetwo left">One Two!</button>
         </div>
         <div class="score">
-          <span class="team-name right">B team</span>
-          <p class="score cur right">50</p>
+          <div>
+            <span class="team-name right">B team</span>
+            <p class="score cur right">50</p>
+          </div>
+          <button class="onetwo right">One Two!</button>
         </div>
       </div>
       <div class="btn-boxs">
-        <div class="btns">
-          <button class="btn-t">Small Tichu</button>
-          <button class="btn-t">Large Tichu</button>
-          <button class="btn-sf">success or fail</button>
-          <button class="btn-ot">One Two!</button>
+        <div class="btns left">
+          <button class="small">Small Tichu</button>
+          <button class="large">Large Tichu</button>
+          <button class="sf">success or fail</button>
         </div>
-        <div class="btns">
-          <button class="btn-t">Small Tichu</button>
-          <button class="btn-t">Large Tichu</button>
-          <button class="btn-sf">success or fail</button>
-          <button class="btn-ot">One Two!</button>
+        <div class="btns right">
+          <button class="small">Small Tichu</button>
+          <button class="large">Large Tichu</button>
+          <button class="sf">success or fail</button>
         </div>
       </div>
     </section>
