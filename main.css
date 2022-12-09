@@ -28,14 +28,18 @@ section {
   margin-bottom: 20px;
 }
 
-section#main {
+section.main {
   position: relative;
 }
 
-button#btn-reset {
+button.reset {
   position: absolute;
   top: 0;
   right: 0;
+}
+
+span.team-name {
+  font-weight: 700;
 }
 
 header {
@@ -45,11 +49,11 @@ header {
   color: #fff;
 }
 
-div#score-box {
+div.score-box {
   display: flex;
 }
 
-div#score {
+div.score {
   width: 384px;
 }
 
@@ -71,14 +75,24 @@ li > button {
   right: 0;
 }
 
-div#btn-boxs {
+div.btn-boxs {
   display: flex;
 }
 
-div#btns {
+div.btns {
   width: 384px;
 }
 
-input#input-score {
+div.btns > button {
+  height: 24px;
+  background-color: #fff;
+  border: 1px solid rgb(37, 167, 109);
+  color: rgb(15, 92, 57);
+}
+
+div.btns > button {
+}
+
+input.input-score {
   width: 700px;
 }

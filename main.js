@@ -7,9 +7,9 @@ let now = 1;
 
 // 점수 입력
 const inputValue = () => {
-  let curA = document.getElementById("c-score-a");
-  let curB = document.getElementById("c-score-b");
-  let score = document.getElementById("input-score").value;
+  let curA = document.querySelector(".score.cur.left");
+  let curB = document.querySelector(".score.cur.right");
+  let score = document.querySelector(".input-score").value;
 
   curA.innerText = score;
   curB.innerText = 100 - score;
@@ -25,31 +25,31 @@ const inputValue = () => {
 
 // 총 점수 저장하기
 const save = () => {
-  let curA = Number(document.getElementById("c-score-a").innerText);
-  let curB = Number(document.getElementById("c-score-b").innerText);
-
-  let totalA = Number(document.getElementById("score-a").innerText);
-  let totalB = Number(document.getElementById("score-b").innerText);
+  let curA = Number(document.querySelector(".score.cur.left").innerText);
+  let curB = Number(document.querySelector(".score.cur.right").innerText);
+  console.log(curA);
+  let totalA = Number(document.querySelector(".score.total.left").innerText);
+  let totalB = Number(document.querySelector(".score.total.right").innerText);
 
   // 합계 저장
-  document.getElementById("score-a").innerText = totalA + curA;
-  document.getElementById("score-b").innerText = totalB + curB;
+  document.querySelector(".score.total.left").innerText = totalA + curA;
+  document.querySelector(".score.total.right").innerText = totalB + curB;
 
-  document.getElementById("c-score-a").innerText = 50;
-  document.getElementById("c-score-b").innerText = 50;
-  document.getElementById("input-score").value = 50;
+  document.querySelector(".score.total.left").innerText = 50;
+  document.querySelector(".score.total.right").innerText = 50;
+  document.querySelector(".input-score").value = 50;
 
   // 현재 라운드 점수 저장
-  const hisotryEl = document.getElementById("history");
+  const hisotryEl = document.querySelector(".history");
   let liEl = document.createElement("li");
   let rEl = document.createElement("p");
   let aEl = document.createElement("div");
   let bEl = document.createElement("div");
 
-  liEl.id = `round${now}`;
+  liEl.classList.add(`round${now}`);
   rEl.innerHTML = `${now}.`;
-  aEl.id = `score${now}`;
-  bEl.id = `score${now}`;
+  aEl.classList.add(`score${now}`);
+  bEl.classList.add(`score${now}`);
   aEl.innerHTML = curA;
   bEl.innerHTML = curB;
 
@@ -58,7 +58,7 @@ const save = () => {
   liEl.appendChild(bEl);
 
   let btnEl = document.createElement("button");
-  btnEl.id = `btn-del${now}`;
+  btnEl.classList.add(`btn-del${now}`);
   btnEl.innerHTML = "X";
   liEl.appendChild(btnEl);
 

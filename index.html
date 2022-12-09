@@ -3,63 +3,63 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="wclassth=device-wclassth, initial-scale=1.0" />
     <title>Tichu Counter</title>
     <link rel="stylesheet" href="./main.css" />
     <script src="./main.js"></script>
   </head>
   <body>
-    <section id="main">
-      <header id="main-title">Tichu Counter</header>
-      <button id="btn-reset">reset</button>
-      <div id="score-box">
-        <div id="score">
-          <span id="team-name-a">A team</span>
-          <p id="score-a">0</p>
+    <section class="main">
+      <header class="main-title">Tichu Counter</header>
+      <button class="reset">reset</button>
+      <div class="score-box">
+        <div class="score">
+          <span class="team-name left">A team</span>
+          <p class="score total left">0</p>
         </div>
-        <div id="score">
-          <span id="team-name-b">B team</span>
-          <p id="score-b">0</p>
+        <div class="score">
+          <span class="team-name right">B team</span>
+          <p class="score total right">0</p>
         </div>
       </div>
     </section>
 
     <section>
-      <header id="sub-title">History</header>
-      <ul id="history">
-        <li id="round">
+      <header class="sub-title">History</header>
+      <ul class="history">
+        <li class="round">
           <p>0.</p>
-          <div id="score">temp1</div>
-          <div id="score">temp2</div>
+          <div class="score round left">temp1</div>
+          <div class="score round right">temp2</div>
           <button>X</button>
         </li>
       </ul>
     </section>
 
     <section>
-      <header id="sub-title">Current Round Score</header>
-      <div id="score-box">
-        <div id="score">
-          <span id="team-name-a">A team</span>
-          <p id="c-score-a">50</p>
+      <header class="sub-title">Current Round Score</header>
+      <div class="score-box">
+        <div class="score">
+          <span class="team-name left">A team</span>
+          <p class="score cur left">50</p>
         </div>
-        <div id="score">
-          <span id="team-name-b">B team</span>
-          <p id="c-score-b">50</p>
+        <div class="score">
+          <span class="team-name right">B team</span>
+          <p class="score cur right">50</p>
         </div>
       </div>
-      <div id="btn-boxs">
-        <div id="btns">
-          <button id="btn-t">Small Tichu</button>
-          <button id="btn-t">Large Tichu</button>
-          <button id="btn-sf">success or fail</button>
-          <button id="btn-ot">One Two!</button>
+      <div class="btn-boxs">
+        <div class="btns">
+          <button class="btn-t">Small Tichu</button>
+          <button class="btn-t">Large Tichu</button>
+          <button class="btn-sf">success or fail</button>
+          <button class="btn-ot">One Two!</button>
         </div>
-        <div id="btns">
-          <button id="btn-t">Small Tichu</button>
-          <button id="btn-t">Large Tichu</button>
-          <button id="btn-sf">success or fail</button>
-          <button id="btn-ot">One Two!</button>
+        <div class="btns">
+          <button class="btn-t">Small Tichu</button>
+          <button class="btn-t">Large Tichu</button>
+          <button class="btn-sf">success or fail</button>
+          <button class="btn-ot">One Two!</button>
         </div>
       </div>
     </section>
@@ -68,7 +68,7 @@
       <div>점수 입력하는 input</div>
       <div>
         <input
-          id="input-score"
+          class="input-score"
           type="range"
           min="0"
           max="100"
@@ -77,7 +77,7 @@
           oninput="inputValue(this)"
         />
       </div>
-      <button id="btn-save" onclick="save(this)">Save</button>
+      <button class="btn-save" onclick="save(this)">Save</button>
     </section>
   </body>
 </html>
