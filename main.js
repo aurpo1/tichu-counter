@@ -1,3 +1,5 @@
+import { makeRoundHistory } from "./makeRoundHistory.js";
+
 console.log("티츄 카운터 만들고 싶어");
 
 // 현재 라운드
@@ -5,26 +7,44 @@ let now = 1;
 
 // 세션 스토리지에 저장된 점수들
 let totalScore = JSON.parse(window.sessionStorage.getItem("total"));
-let roundScores = JSON.parse(window.sessionStorage.getItem("round"));
+let roundScores = JSON.parse(window.sessionStorage.getItem("score"));
 if (!roundScores) roundScores = [];
 
 console.log("저장된 ", totalScore, roundScores);
-
-// 가져왔으니 화면에 넣어주기
-if (roundScores.length !== 0) {
-}
-
-// 리셋 버튼 누르면 총 점수, 히스토리 모두 삭제
-const reset = document.querySelector(".reset");
-reset.addEventListener("click", () => {
-  window.sessionStorage.clear();
-});
 
 let curAEl = document.querySelector(".score.cur.left");
 let curBEl = document.querySelector(".score.cur.right");
 
 let totalAEl = document.querySelector(".score.total.left");
 let totalBEl = document.querySelector(".score.total.right");
+
+const hisotryEl = document.querySelector(".history");
+
+// 세션 스토리지에 저장된 점수가 있는 경우
+if (roundScores.length !== 0 && totalScore !== null) {
+  totalAEl.innerText = totalScore[0];
+  totalBEl.innerText = totalScore[1];
+
+  hisotryEl.innerHTML = "";
+  for (let i = 0; i < roundScores.length; i++) {
+    makeRoundHistory(hisotryEl, roundScores[i][0], roundScores[i][1], i + 1);
+  }
+}
+
+// 리셋 버튼 누르면 총 점수, 히스토리 모두 삭제
+const reset = document.querySelector(".reset");
+reset.addEventListener("click", () => {
+  totalAEl.innerText = 50;
+  totalBEl.innerText = 50;
+  document.querySelector(".input-score").value = 50;
+
+  const noDiv = document.createElement("div");
+  noDiv.innerText = "No Data";
+
+  hisotryEl.innerHTML = "";
+  hisotryEl.appendChild(noDiv);
+  window.sessionStorage.clear();
+});
 
 // 점수 입력
 const inputEl = document.querySelector(".input-score");
@@ -54,7 +74,8 @@ console.log(btns[0].children[0]);
 // X 누르면 없어지고 토탈 점수도 수정하기
 
 // 점수 저장하기
-const save = () => {
+const save = document.querySelector(".save");
+save.addEventListener("click", () => {
   let curA = Number(curAEl.innerText);
   let curB = Number(curBEl.innerText);
 
@@ -72,34 +93,11 @@ const save = () => {
   document.querySelector(".input-score").value = 50;
 
   // 현재 라운드 점수
-  const hisotryEl = document.querySelector(".history");
-  let liEl = document.createElement("li");
-  let rEl = document.createElement("p");
-  let aEl = document.createElement("div");
-  let bEl = document.createElement("div");
-
-  liEl.classList.add("round", `${now}`, `round${now}`);
-  rEl.innerHTML = `${now}.`;
-  aEl.classList.add("score", "round", `${now}`, "left");
-  bEl.classList.add("score", "round", `${now}`, "right");
-  aEl.innerHTML = curA;
-  bEl.innerHTML = curB;
-
+  makeRoundHistory(hisotryEl, curA, curB, now);
   roundScores.push([curA, curB]);
-
-  liEl.appendChild(rEl);
-  liEl.appendChild(aEl);
-  liEl.appendChild(bEl);
-
-  let btnEl = document.createElement("button");
-  btnEl.classList.add("btn=del", `${now}`, `btn-del${now}`);
-  btnEl.innerHTML = "X";
-  liEl.appendChild(btnEl);
-
-  hisotryEl.appendChild(liEl);
 
   console.log(totalScore, roundScores);
   window.sessionStorage.setItem("total", JSON.stringify(totalScore));
   window.sessionStorage.setItem("score", JSON.stringify(roundScores));
   now++;
-};
+});
