@@ -79,6 +79,10 @@ li.round > button {
   right: 5px;
 }
 
+.history > div.initial {
+  margin: 20px 0;
+}
+
 .sub2 > .score-box > .score {
   position: relative;
   height: 60px;
