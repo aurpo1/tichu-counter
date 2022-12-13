@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tichu Counter</title>
     <link rel="stylesheet" href="./main.css" />
-    <script defer src="./main.js"></script>
+    <script defer type="module" src="./main.js"></script>
   </head>
   <body>
     <section class="main">
@@ -27,12 +27,13 @@
     <section class="sub1">
       <header class="sub-title">History</header>
       <ul class="history">
-        <li class="round">
+        <div class="initial">No Data</div>
+        <!-- <li class="round"> 
           <p>0.</p>
-          <div class="score round left">temp1</div>
-          <div class="score round right">temp2</div>
+          <div class="score round left">no data</div>
+          <div class="score round right">no data</div>
           <button>X</button>
-        </li>
+        </li> -->
       </ul>
     </section>
 
@@ -73,7 +74,7 @@
       <div>
         <input class="input-score" type="range" min="0" max="100" step="5" value="50" />
       </div>
-      <button class="save" onclick="save(this)">Save</button>
+      <button class="save">Save</button>
     </section>
   </body>
 </html>
