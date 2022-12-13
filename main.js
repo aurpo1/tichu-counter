@@ -1,3 +1,4 @@
+import { reset } from "./reset.js";
 import { makeRoundHistory } from "./makeRoundHistory.js";
 
 console.log("티츄 카운터 만들고 싶어");
@@ -35,32 +36,51 @@ if (roundScores.length !== 0 && totalScore !== null) {
 }
 
 // 리셋 버튼 누르면 총 점수, 히스토리 모두 삭제
-const reset = document.querySelector(".reset");
-reset.addEventListener("click", () => {
-  hisotryEl.innerHTML = "";
+const resetEl = document.querySelector(".reset");
+resetEl.addEventListener("click", () => {
   now = 1;
-
   totalAEl.innerText = 0;
   totalBEl.innerText = 0;
-  document.querySelector(".input-score").value = 50;
+  inputEl.value = 50;
 
-  const noDiv = document.createElement("div");
-  noDiv.innerText = "No Data";
-
-  hisotryEl.innerHTML = "";
-  hisotryEl.appendChild(noDiv);
+  reset(hisotryEl);
 
   totalScore = null;
   roundScores = [];
-
-  window.sessionStorage.clear();
 });
 
 // 라운드 점수 삭제하기
 hisotryEl.addEventListener("click", (el) => {
   if (el.target.classList[0] === "btn-del") {
-    console.log(el.target);
-    console.log(el);
+    let delRound = Number(el.target.classList[1]);
+    let pparentEl = el.path[2];
+
+    if (pparentEl.children.length === 1) {
+      now = 1;
+      totalAEl.innerText = 0;
+      totalBEl.innerText = 0;
+      inputEl.value = 50;
+
+      reset(pparentEl);
+
+      totalScore = null;
+      roundScores = [];
+    } else {
+      let a = Number(totalScore[0]) - Number(roundScores[delRound - 1][0]);
+      let b = Number(totalScore[1]) - Number(roundScores[delRound - 1][1]);
+
+      totalAEl.innerText = a;
+      totalBEl.innerText = b;
+      totalScore = [a, b];
+      roundScores.splice(delRound - 1, 1);
+
+      pparentEl.removeChild(pparentEl.children[delRound - 1]);
+    }
+
+    window.sessionStorage.setItem("total", JSON.stringify(totalScore));
+    window.sessionStorage.setItem("score", JSON.stringify(roundScores));
+
+    // To Do !! 중간 라운드 삭제했을 때 라운드 숫자 에러
   }
 });
 
