@@ -2,13 +2,15 @@ import { makeRoundHistory } from "./makeRoundHistory.js";
 
 console.log("티츄 카운터 만들고 싶어");
 
-// 현재 라운드
-let now = 1;
-
 // 세션 스토리지에 저장된 점수들
 let totalScore = JSON.parse(window.sessionStorage.getItem("total"));
 let roundScores = JSON.parse(window.sessionStorage.getItem("score"));
+
+// 현재 라운드
+let now = 1;
+
 if (!roundScores) roundScores = [];
+else now = roundScores.length + 1;
 
 console.log("저장된 ", totalScore, roundScores);
 
@@ -19,6 +21,7 @@ let totalAEl = document.querySelector(".score.total.left");
 let totalBEl = document.querySelector(".score.total.right");
 
 const hisotryEl = document.querySelector(".history");
+const inputEl = document.querySelector(".input-score");
 
 // 세션 스토리지에 저장된 점수가 있는 경우
 if (roundScores.length !== 0 && totalScore !== null) {
@@ -34,8 +37,11 @@ if (roundScores.length !== 0 && totalScore !== null) {
 // 리셋 버튼 누르면 총 점수, 히스토리 모두 삭제
 const reset = document.querySelector(".reset");
 reset.addEventListener("click", () => {
-  totalAEl.innerText = 50;
-  totalBEl.innerText = 50;
+  hisotryEl.innerHTML = "";
+  now = 1;
+
+  totalAEl.innerText = 0;
+  totalBEl.innerText = 0;
   document.querySelector(".input-score").value = 50;
 
   const noDiv = document.createElement("div");
@@ -43,11 +49,22 @@ reset.addEventListener("click", () => {
 
   hisotryEl.innerHTML = "";
   hisotryEl.appendChild(noDiv);
+
+  totalScore = null;
+  roundScores = [];
+
   window.sessionStorage.clear();
 });
 
+// 라운드 점수 삭제하기
+hisotryEl.addEventListener("click", (el) => {
+  if (el.target.classList[0] === "btn-del") {
+    console.log(el.target);
+    console.log(el);
+  }
+});
+
 // 점수 입력
-const inputEl = document.querySelector(".input-score");
 inputEl.addEventListener("change", () => {
   curAEl.innerText = inputEl.value;
   curBEl.innerText = 100 - inputEl.value;
@@ -90,13 +107,12 @@ save.addEventListener("click", () => {
 
   curAEl.innerText = 50;
   curBEl.innerText = 50;
-  document.querySelector(".input-score").value = 50;
+  inputEl.value = 50;
 
   // 현재 라운드 점수
   makeRoundHistory(hisotryEl, curA, curB, now);
   roundScores.push([curA, curB]);
 
-  console.log(totalScore, roundScores);
   window.sessionStorage.setItem("total", JSON.stringify(totalScore));
   window.sessionStorage.setItem("score", JSON.stringify(roundScores));
   now++;
