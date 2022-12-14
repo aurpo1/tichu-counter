@@ -23,6 +23,7 @@ let totalBEl = document.querySelector(".score.total.right");
 
 const hisotryEl = document.querySelector(".history");
 const inputEl = document.querySelector(".input-score");
+const btnBoxEl = document.querySelector(".btn-boxs");
 
 // 세션 스토리지에 저장된 점수가 있는 경우
 if (roundScores.length !== 0 && totalScore !== null) {
@@ -103,12 +104,23 @@ inputEl.addEventListener("change", () => {
 // 원투 -> 스티 라티 한 경우 -> +200
 //      -> 없는 경우 -> 이긴 팀은 200, 진 팀은 0
 
+// 0: 미선택 1: small 2: large
+let leftT = 0;
+let rightT = 0;
+// 0: 미선택 1: A win 1: B win
+let onetwo = 0;
+
+const onetwoLeftEl = document.querySelector(".sf.left");
+const onetwoRightEl = document.querySelector(".sf.right");
+
+btnBoxEl.addEventListener("click", (el) => {
+  // console.log(el);
+  let targetName = el.target.classList;
+});
+
 const clickEvent = (el, i) => {
   el.classList.toggle("active");
 };
-
-let btns = document.querySelectorAll(".btns");
-console.log(btns[0].children[0]);
 
 // 버튼 눌렀을 때 점수 추가하기
 // 1. small large 눌려있을 때 s / f 활성화 -> s 는 + f -
