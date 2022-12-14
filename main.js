@@ -55,6 +55,7 @@ hisotryEl.addEventListener("click", (el) => {
     let delRound = Number(el.target.classList[1]);
     let pparentEl = el.path[2];
 
+    // 삭제하는 라운드가 남은 하나인 경우 reset
     if (pparentEl.children.length === 1) {
       now = 1;
       totalAEl.innerText = 0;
@@ -69,18 +70,25 @@ hisotryEl.addEventListener("click", (el) => {
       let a = Number(totalScore[0]) - Number(roundScores[delRound - 1][0]);
       let b = Number(totalScore[1]) - Number(roundScores[delRound - 1][1]);
 
+      now--;
+
       totalAEl.innerText = a;
       totalBEl.innerText = b;
       totalScore = [a, b];
       roundScores.splice(delRound - 1, 1);
 
-      pparentEl.removeChild(pparentEl.children[delRound - 1]);
+      if (pparentEl.children.length === delRound) {
+        pparentEl.removeChild(pparentEl.children[delRound - 1]);
+      } else {
+        // 중간 라운드 삭제하는 경우 reload
+        for (let i = 0; i < roundScores.length; i++) {
+          makeRoundHistory(hisotryEl, roundScores[i][0], roundScores[i][1], i + 1);
+        }
+      }
     }
 
     window.sessionStorage.setItem("total", JSON.stringify(totalScore));
     window.sessionStorage.setItem("score", JSON.stringify(roundScores));
-
-    // To Do !! 중간 라운드 삭제했을 때 라운드 숫자 에러
   }
 });
 
