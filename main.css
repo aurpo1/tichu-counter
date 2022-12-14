@@ -1,10 +1,13 @@
 /* COMMON */
+* {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
 body {
   margin: 0 auto;
   width: 768px;
   text-align: center;
   vertical-align: middle;
-  font-family: "Noto Sans KR", sans-serif;
 }
 
 button {
@@ -123,18 +126,44 @@ div.btn-boxs > div.btns {
   display: flex;
 }
 
-div.btn-boxs > div.btns button {
+div.btn-boxs > div.btns > .tichu > input[type="radio"] {
+  display: none;
+}
+
+div.btn-boxs > div.btns input[type="radio"] + div {
+  width: 100px;
   height: 24px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0px 5px;
+  cursor: pointer;
   background-color: #fff;
+  border: 1px solid rgb(37, 167, 109);
+  border-radius: 5px;
+  color: rgb(15, 92, 57);
 }
 
-div.btn-boxs > div.btns button:nth-child(2) {
-  margin: 0 5px;
-}
-
-div.btn-boxs > div.btns > button.active {
+div.btn-boxs > div.btns > .tichu > input[type="radio"]:checked + div {
   background-color: rgb(37, 167, 109);
   color: #fff;
+}
+
+div.btn-boxs > div.btns button.sf {
+  display: block;
+  background-color: rgb(37, 167, 109);
+  color: #fff;
+  margin-left: 5px;
+}
+
+div.btn-boxs > div.btns button.sf.fail {
+  background-color: rgb(95, 95, 95);
+  border: none;
+}
+
+div.btn-boxs > div.btns button.sf.none {
+  display: none;
 }
 
 input.input-score {
